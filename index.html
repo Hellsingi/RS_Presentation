@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>DOM</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<link rel="stylesheet" href="css/styles.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Document Object Model </h1>			
+				</section>
+				<section>
+					<h2>Hello Everyone</h2>
+					<p>My name is Ilya.</p>
+					<p>I will tell about the Document Object Model</p>
+				</section>
+				<section>
+					<section>					
+						<p>When a web page is loaded, the browser creates a Document Object Model (DOM).</p>
+					</section>
+					<section>
+						<h2>WHAT IS a DOM?</h2>
+					</section>
+					<section>
+						<p>The Document Object Model (DOM) is a programming interface for HTML and XML documents. 
+							It represents the page so that programs can change the document structure, style, and content. 
+							The DOM model represents a document with a logical tree.
+							Each branch of the tree ends in a node, and each node contains objects.</p>
+					</section>
+					<section>
+							<h3>DOM representation</h3>
+						<div style=" display:-webkit-box">															
+						<pre style="width: 45%; margin: 0; font-size: 0.5em" class=" text-left"><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+	&lt;title&gt;My Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;h1&gt;My Header&lt;/h1&gt;
+	&lt;a href="http://braika.com"&gt;
+My Link&lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+						  <img style="margin:0px" src="images/DOM.png" class="DOM-representation" alt="DOM representation">
+						</div>	
+					</section>
+					<section>
+						<p>
+							The principal standardization of DOM was handled by the World Wide Web Consortium, which last developed a recommendation in 2004. 
+							WHATWG took over development of the standard, publishing it as a living document. 
+							The W3C now publishes stable snapshots of the WHATWG standard.
+						</p>
+					</section>
+				</section>
+				<section>
+					<section>
+							<h2>WHY DO WE NEED DOM?</h2>
+							<ul class="fragment" data-fragment-index="2">
+							<li>provides a structured representation of the document (a tree)</li>
+							<li>DOM is needed in order to manipulate the page: read information from HTML, create and modify elements.</li>							
+							</ul>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>NODE</h2>
+						<p class="fragment" data-fragment-index="2">
+							All items in the DOM are defined as nodes.
+							Node is an interface from which a number of DOM API object types inherit.
+						</p>
+					</section>
+					<section>
+						<h4>There are 12 different node types, which may have children of various node types:</h4>
+						<ol class="fragment" data-fragment-index="2" style="font-size: 0.8em">
+							<li>Element</li>							
+							<li>Attribute</li>
+							<li>Text</li>
+							<li>CDATA Section</li>
+							<li>Entity Reference</li>
+							<li>Entity</li>
+							<li>Processing Instruction</li>
+							<li>Comment</li>
+							<li>Document</li>
+							<li>Document Type</li>
+							<li>Document Fragment</li>
+							<li>Notation</li>							
+						</ol>
+					</section>
+					<section>
+						<h4>In practice usually work with 4 of them:</h4>
+						<ol class="fragment" data-fragment-index="2">
+							<li>Document – the “entry point” into DOM.</li>
+							<li>Element nodes – HTML-tags, the tree building blocks.</li>
+							<li>Text nodes – contain text.</li>
+							<li>Comment – sometimes we can put the information there, it won’t be shown, but JS can read it from the DOM.</li>												
+					</section>
+					<section>
+						<h3>All nodes has methods and properties</h3>
+						<ul class="fragment" data-fragment-index="2">
+							<li>A property is a value that you can get or set.</li>
+							<li>A method is an action you can do.</li>
+						</ul>	
+					</section>
+				</section>
+				<section>
+					<section>
+							<h2>NODE</h2>
+							<p>Methods:</p>
+							<ul style="font-size: 0.8em">
+								<li class="fragment visible" data-fragment-index="0">appendChild() </li>
+								<li class="fragment visible" data-fragment-index="1">hasChildNodes()</li>
+								<li class="fragment visible" data-fragment-index="2">isEqualNode()</li>
+								<li class="fragment visible" data-fragment-index="3">removeChild()</li>
+								<li class="fragment visible" data-fragment-index="4">replaceChild()</li>	
+								<li class="fragment visible" data-fragment-index="5"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">other Methods</a></li>						
+							</ul>						
+					</section>
+					<section>
+						<h3 >Some examples of methods</h3>
+						<pre class="fragment visible" data-fragment-index="1"><code class=" text-center title">element.appendChild(aChild);</code></pre>
+						<p class="fragment visible" data-fragment-index="2">
+								The Node.appendChild() method adds a node to the end of the list of children of a specified parent node.
+						</p>
+						<pre class="fragment visible" data-fragment-index="3"><code class="javascript">let p = document.createElement("p");
+document.body.appendChild(p);</code></pre>
+					</section>
+					<section> 
+						<pre ><code class=" text-center title"> node.hasChildNodes();</code></pre>
+						<p>
+								The Node.hasChildNodes() method returns a Boolean value indicating whether the current Node has child nodes or not.
+						</p>
+						<pre><code class="javascript">let foo = document.getElementById("foo");
+if (foo.hasChildNodes()) { 
+	foo.removeChild( foo.childNodes[0] );
+}</code></pre>		
+					</section>
+					<section> 
+							<pre ><code class=" text-center title">let dupNode = node.cloneNode([deep]);</code></pre>
+							<p>
+									The Node.cloneNode() method returns a duplicate of the node on which this method was called.							</p>
+							<pre><code class="javascript">let p = document.getElementById("para1");
+let p_prime = p.cloneNode(true);</code></pre>		
+					</section>
+				</section>
+				<section>
+					<section>
+							<h2>NODE</h2>
+							<p>Properties:</p>
+							<ul style="font-size: 0.8em">
+								<li class="fragment visible" data-fragment-index="0">childNodes</li>
+								<li class="fragment visible" data-fragment-index="1">lastChild</li>
+								<li class="fragment visible" data-fragment-index="2">nodeType</li>
+								<li class="fragment visible" data-fragment-index="3">parentNode</li>
+								<li class="fragment visible" data-fragment-index="4">previousSibling</li>	
+								<li class="fragment visible" data-fragment-index="5"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">other Properties</a></li>						
+							</ul>						
+					</section>
+					<section>
+							<h3 >Some examples of properties</h3>
+							<pre class="fragment visible" data-fragment-index="1"><code class=" text-center title">let nodeList = elementNodeReference.childNodes; </code></pre>
+						<p class="fragment visible" data-fragment-index="2" style="font-size: 0.75em">
+								The Node.childNodes read-only property returns a live NodeList of child nodes of the given element where the first child node is assigned index 0.
+						</p>
+						<pre class="fragment visible" data-fragment-index="3"><code class="javascript" >while (box.firstChild) {
+	box.removeChild(box.firstChild); 
+}</code></pre>
+					</section>
+					<section> 
+							<pre ><code class=" text-center title">let type = node.nodeType;</code></pre>
+							<p>
+								Returns an unsigned short representing the type of the node. 
+							<pre><code class="javascript">let node = document.documentElement.firstChild;
+if (node.nodeType != Node.COMMENT_NODE)
+console.log("You should comment your code well!");</code></pre>		
+					</section>
+					<section> 
+							<pre ><code class=" text-center title">previousNode = node.previousSibling;</code></pre>
+							<p style="font-size: 0.8em">
+									The Node.previousSibling read-only property returns the node immediately preceding the specified one 
+									in its parent's childNodes list, or null if the specified node is the first in that list. 
+							</p>
+							<pre><code class="xml"><img id="b0">
+<img id="b1">
+<img id="b2">
+console.log(document.getElementById("b1").previousSibling);
+console.log(document.getElementById("b2").previousSibling.id);</code></pre>		
+					</section>
+				</section>
+				<section>
+						<section>
+								<h2>DOCUMENT</h2>
+								<p>The Document interface represents any web page loaded in 
+									the browser and serves as an entry point into the web page's content, which is the DOM tree.
+									The DOM tree provides functionality globally to the document.
+									The Document interface describes the common properties and methods for any kind of document.
+								</p>
+						</section>
+						<section>
+								<h3>Document</h3>
+								<p>Properties:</p>
+								<ul style="font-size: 0.8em">
+									<li class="fragment visible" data-fragment-index="0">Document.body</li>
+									<li class="fragment visible" data-fragment-index="1">Document.contentType </li>
+									<li class="fragment visible" data-fragment-index="2">Document.documentElement </li>
+									<li class="fragment visible" data-fragment-index="3">Document.images </li>
+									<li class="fragment visible" data-fragment-index="4">Document.doctype </li>	
+									<li class="fragment visible" data-fragment-index="5"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">other Properties</a></li>						
+								</ul>	
+						</section>
+					<section>
+							<h3 >Some examples of properties</h3>
+								<pre class="fragment visible" data-fragment-index="1"><code class="javascript">let objRef = document.body; 
+document.body = objRef;</code></pre>
+							<p class="fragment visible" data-fragment-index="2" style="font-size: 0.8em">
+									The Document.body property represents the  &lt;body&gt; or &lt;frameset&gt; 
+									node of the current document, or null if no such element exists.							
+							</p> 
+							<pre class="fragment visible" data-fragment-index="3"><code class="javascript">// in HTML: &lt;body id="oldBodyElement"&gt;&lt;/body&gt;
+alert(document.body.id); // "oldBodyElement"	
+let aNewBodyElement = document.createElement("body");
+aNewBodyElement.id = "newBodyElement";
+document.body = aNewBodyElement;
+alert(document.body.id); // "newBodyElement"</code></pre>
+					</section>
+					<section> 
+							<pre ><code class=" text-center title">let fontFaceSet = document.fonts;</code></pre>
+							<p>								
+							The fonts property of the Document interface returns the FontFaceSet interface of the document.
+							</p>
+
+							<pre><code class="javascript">document.fonts.ready.then(function() {
+	// Any operation that needs to be done only after all the fonts
+	// have finished loading can go here.
+});</code></pre>		
+					</section>
+					<section> 
+							<pre ><code class=" text-center title">let objRef = document.head;</code></pre>
+							<p>															
+							The head read-only property of the Document interface returns the <head> element of the current document.
+							</p>
+							<pre  style="font-size: 0.5em"><code class="javascript" style="max-height:434px">&lt;!doctype html&gt;
+&lt;head id="my-document-head"&gt;
+&lt;title>Example: using document.head &lt;/title&gt;
+&lt;/head&gt;
+&lt;script&gt;
+var theHead = document.head;
+console.log(theHead.id); // "my-document-head";
+console.log(theHead === document.querySelector("head")); // true
+&lt;/script&gt;</code></pre>		
+					</section>
+				</section>
+				<section>
+					<section>
+							<h3>Document</h3>
+							<p>Methods:</p>
+							<ul style="font-size: 0.8em">
+								<li class="fragment visible" data-fragment-index="0">Document.createAttribute()</li>
+								<li class="fragment visible" data-fragment-index="1">Document.createElement()</li>
+								<li class="fragment visible" data-fragment-index="2">Document.createEvent()</li>
+								<li class="fragment visible" data-fragment-index="3">Document.createTextNode()</li>
+								<li class="fragment visible" data-fragment-index="4"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">other Methods</a></li>						
+							</ul>	
+					</section>
+					<section>
+							<h3 >Some examples of Methods</h3>
+								<pre class="fragment visible" data-fragment-index="1"><code class="javascript">	let element = document.createElement(tagName[, options]);</code></pre>
+							<p class="fragment visible" data-fragment-index="2" style="font-size: 0.8em">
+								In an HTML document, the document.createElement() method creates the HTML element specified by tagName, or an HTMLUnknownElement if tagName isn't recognized.
+							</p> 
+							<pre class="fragment visible" data-fragment-index="3"><code class="javascript">function addElement() {
+	let newDiv = document.createElement("div");
+}</code></pre>
+					</section>
+					<section> 
+							<pre ><code class=" text-center title">let event = document.createEvent(type);</code></pre>
+							<p>
+								Creates an event of the type specified.
+								The returned object should be first initialized and can then be passed to element.dispatchEvent.
+							</p>
+							<pre ><code class="javascript">// Create the event.
+let event = document.createEvent('Event');
+// Define that the event name is 'build'.
+event.initEvent('build', true, true);</code></pre>		
+					</section>
+					<section class="present" style="top: -66.5px; display: block;">
+							<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document">more about Document</a></p>
+					</section>	
+				</section>
+				<section >
+						<h3>THANKS FOR ATTENTION!</h3>				
+				</section>				
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
